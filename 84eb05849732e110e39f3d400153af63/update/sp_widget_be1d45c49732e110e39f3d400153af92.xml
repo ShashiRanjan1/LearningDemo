@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope,$rootScope) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.var1 = "Getting datda from client";
+	$rootScope.var2 = "Getting datda from client from root";
+	
+	$scope.sendData = function(){
+		c.server.update().then(function(res){
+				$rootScope.var2 = res.var5;
+		});
+	
+	}
+	
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>demo1</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>demo1</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.var3 = "Getting data from server";
+	
+	data.var5 =  input.var4 + ":  data manipulated into server";
+	console.log(data.var5);
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-05-09 10:35:12</sys_created_on>
+        <sys_id>be1d45c49732e110e39f3d400153af92</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>demo1</sys_name>
+        <sys_package display_value="Demo" source="84eb05849732e110e39f3d400153af63">84eb05849732e110e39f3d400153af63</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">84eb05849732e110e39f3d400153af63</sys_scope>
+        <sys_update_name>sp_widget_be1d45c49732e110e39f3d400153af92</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-05-09 12:21:12</sys_updated_on>
+        <template><![CDATA[<div>
+  <h1>Getting data from first widget</h1>
+    <div>{{c.data.var5}}</div>
+  <input type = text ng-model = "c.data.var4">
+  <button ng-click= "sendData()">send to server</button>
+     
+</div>]]></template>
+    </sp_widget>
+</record_update>
